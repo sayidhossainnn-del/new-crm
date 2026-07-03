@@ -519,7 +519,7 @@ function ProspectModal({ prospect, onClose, onSave, saving }) {
         <div className="grid grid-cols-2 gap-3">
           <Field label="Brand" value={form.name} onChange={(v) => set("name", v)} />
           <Field label="Instagram" value={form.ig} onChange={(v) => set("ig", v)} />
-          <Field label="Niche" value={form.niche} onChange={(v) => set("niche", v)} />
+          <Field label="Niche" value={form.niche} onChange={(v) => set("niche", v)} listId="niche-suggestions" />
           <Field label="Deal Value ($)" type="number" value={form.value} onChange={(v) => set("value", Number(v))} />
           <Field label="Founder Name" value={form.founder} onChange={(v) => set("founder", v)} />
           <Field label="Active Ads" type="number" value={form.ads} onChange={(v) => set("ads", v)} />
@@ -549,12 +549,17 @@ function ProspectModal({ prospect, onClose, onSave, saving }) {
     </div>
   );
 }
-function Field({ label, value, onChange, type = "text" }) {
+function Field({ label, value, onChange, type = "text", listId }) {
   return (
     <div className="flex flex-col gap-1">
       <label className="text-[11px]" style={{ color: textFaint }}>{label}</label>
-      <input type={type} value={value ?? ""} onChange={(e) => onChange(e.target.value)}
+      <input type={type} value={value ?? ""} onChange={(e) => onChange(e.target.value)} list={listId}
         className="text-[12px] px-3 py-2 rounded-lg outline-none" style={{ color: "white", background: "#1a1a1e", border: `1px solid ${panelBorder}` }} />
+      {listId && (
+        <datalist id={listId}>
+          {TARGET_NICHES.map((n) => <option key={n} value={n} />)}
+        </datalist>
+      )}
     </div>
   );
 }
@@ -657,9 +662,10 @@ function ServicesView() {
 
 function NichesView({ prospects }) {
   const map = {};
+  TARGET_NICHES.forEach((n) => { map[n] = 0; });
   prospects.forEach((p) => { const n = p.niche || "Unspecified"; map[n] = (map[n] || 0) + 1; });
   return (
-    <SectionShell icon={LayoutGrid} iconBg="#241547" iconColor="#a07dff" title="Jewelry Sub-Niches">
+    <SectionShell icon={LayoutGrid} iconBg="#241547" iconColor="#a07dff" title="Target Niches">
       <div className="grid grid-cols-3 gap-3">
         {Object.entries(map).map(([niche, count]) => (
           <div key={niche} className="rounded-xl p-3 flex flex-col gap-1" style={{ background: "#1a1a1e", border: `1px solid ${panelBorder}` }}>
