@@ -44,7 +44,7 @@ const TARGET_NICHES = [
   "Fashion Apparel", "Skincare & Beauty",
 ];
 
-const services = [
+const testimonials = [
   { name: "Ana Sundelle", brand: "Sundelle Jewelry", quote: "Our CTR nearly doubled in the first two weeks of new creative.", avatar: "https://i.pravatar.cc/40?img=32" },
   { name: "Reya Cole", brand: "Notbranded", quote: "Flinza actually understands Meta ad fatigue — not just design.", avatar: "https://i.pravatar.cc/40?img=45" },
 ];
