@@ -39,7 +39,12 @@ const services = [
   { name: "Carousel & UGC Content", desc: "Instagram carousel assets, AI-composited lifestyle shots, testimonial carousels.", price: "$400/mo add-on", icon: "🖼️" },
 ];
 
-const testimonials = [
+const TARGET_NICHES = [
+  "Fine Jewelry", "Statement Jewelry", "Minimalist", "Layered Necklaces", "Everyday Gold",
+  "Fashion Apparel", "Skincare & Beauty",
+];
+
+const services = [
   { name: "Ana Sundelle", brand: "Sundelle Jewelry", quote: "Our CTR nearly doubled in the first two weeks of new creative.", avatar: "https://i.pravatar.cc/40?img=32" },
   { name: "Reya Cole", brand: "Notbranded", quote: "Flinza actually understands Meta ad fatigue — not just design.", avatar: "https://i.pravatar.cc/40?img=45" },
 ];
